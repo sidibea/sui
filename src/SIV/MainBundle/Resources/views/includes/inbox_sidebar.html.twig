@@ -1,0 +1,27 @@
+<div class="col-md-2">
+    <ul class="inbox-nav margin-bottom-10">
+        <li class="compose-btn">
+            <a href="{{ path('fos_message_thread_new') }}" data-title="Compose" class="btn green">
+                <i class="fa fa-edit"></i> Nouveau </a>
+        </li>
+        <li class="inbox active">
+            <a href="{{ path('fos_message_inbox') }}" class="btn" data-title="Inbox">
+                Reception {% if unread > 0  %} ({{ unread }}) {% endif %}
+            </a>
+            <b></b>
+        </li>
+        <li class="sent">
+            <a class="btn" href="{{ path('fos_message_sent') }}" data-title="Sent">
+                Envoyé
+            </a>
+            <b></b>
+        </li>
+
+        <li class="trash">
+            <a class="btn" href="{{ path('fos_message_deleted') }}" data-title="Trash">
+                Poubelle
+            </a>
+            <b></b>
+        </li>
+    </ul>
+</div>

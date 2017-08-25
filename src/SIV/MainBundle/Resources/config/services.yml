@@ -1,0 +1,4 @@
+services:
+#    siv_main.example:
+#        class: SIV\MainBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

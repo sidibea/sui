@@ -1,0 +1,45 @@
+siv_security:
+    resource: "@SIVSecurityBundle/Resources/config/routing.yml"
+    prefix:   /security
+
+siv_emp:
+    resource: "@SIVEmpBundle/Resources/config/routing.yml"
+    prefix:   /employee
+
+
+siv_users:
+    resource: "@SIVUsersBundle/Resources/config/routing.yml"
+    prefix:   /
+
+siv_main:
+    resource: "@SIVMainBundle/Resources/config/routing.yml"
+    prefix:   /administration
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /message
+login:
+    path:   /login
+    defaults:  { _controller: SIVUsersBundle:Security:login }
+
+login_check:
+    path:   /login_check
+
+logout:
+    path:   /logout
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /change-password
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /registration
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile

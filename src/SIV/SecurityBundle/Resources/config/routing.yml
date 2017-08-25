@@ -1,0 +1,15 @@
+siv_security_homepage:
+    path:     /
+    defaults: { _controller: SIVSecurityBundle:Main:index }
+siv_security_visiteurs_present:
+    path:     /visiteurs-presents
+    defaults: { _controller: SIVSecurityBundle:Main:Vpresent }
+siv_security_visiteurs_historique:
+    path:     /historique
+    defaults: { _controller: SIVSecurityBundle:Main:historique }
+siv_security_visiteurs_edit:
+    path:     /visiteurs/{id}
+    defaults: { _controller: SIVSecurityBundle:Main:vEdit }
+siv_security_visiteurs_sortie:
+    path:     /visiteurs/sortie/{id}
+    defaults: { _controller: SIVSecurityBundle:Main:vSortie }

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - siv@localhost" uuid="c4ebbd82-a473-4c4d-9e87-f68a19221c24">
+    <database-info product="MySQL" version="5.5.53-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="siv"/>
+    <table name="message" schema="" catalog="siv" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="thread_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="sender_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="body" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_B6BD307FE2904019" columns="thread_id" ref-table="thread" ref-schema="" ref-catalog="siv" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_B6BD307FF624B39D" columns="sender_id" ref-table="users" ref-schema="" ref-catalog="siv" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_4632F005537A1329" table="message_metadata" schema="" catalog="siv" columns="message_id"/>
+      <index name="IDX_B6BD307FE2904019" unique="false" columns="thread_id"/>
+      <index name="IDX_B6BD307FF624B39D" unique="false" columns="sender_id"/>
+    </table>
+    <table name="message_metadata" schema="" catalog="siv" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="message_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="participant_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="is_read" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_4632F005537A1329" columns="message_id" ref-table="message" ref-schema="" ref-catalog="siv" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_4632F0059D1C3019" columns="participant_id" ref-table="users" ref-schema="" ref-catalog="siv" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_4632F005537A1329" unique="false" columns="message_id"/>
+      <index name="IDX_4632F0059D1C3019" unique="false" columns="participant_id"/>
+    </table>
+    <table name="thread" schema="" catalog="siv" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="created_by_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="subject" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="is_spam" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_31204C83B03A8386" columns="created_by_id" ref-table="users" ref-schema="" ref-catalog="siv" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_B6BD307FE2904019" table="message" schema="" catalog="siv" columns="thread_id"/>
+      <exported-key name="FK_40A577C8E2904019" table="thread_metadata" schema="" catalog="siv" columns="thread_id"/>
+      <index name="IDX_31204C83B03A8386" unique="false" columns="created_by_id"/>
+    </table>
+    <table name="thread_metadata" schema="" catalog="siv" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="thread_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="participant_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="is_deleted" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="last_participant_message_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="last_message_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_40A577C89D1C3019" columns="participant_id" ref-table="users" ref-schema="" ref-catalog="siv" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_40A577C8E2904019" columns="thread_id" ref-table="thread" ref-schema="" ref-catalog="siv" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_40A577C89D1C3019" unique="false" columns="participant_id"/>
+      <index name="IDX_40A577C8E2904019" unique="false" columns="thread_id"/>
+    </table>
+    <table name="users" schema="" catalog="siv" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="180" scale="0" nullable="false" jdbcType="12"/>
+      <column name="username_canonical" sqlType="VARCHAR" precision="180" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="180" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email_canonical" sqlType="VARCHAR" precision="180" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="salt" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_login" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="confirmation_token" sqlType="VARCHAR" precision="180" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password_requested_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="roles" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1" remarks="KERDMlR5cGU6YXJyYXkp"/>
+      <column name="nom" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prenom" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date_naissance" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fonction" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="departement" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_B6BD307FF624B39D" table="message" schema="" catalog="siv" columns="sender_id"/>
+      <exported-key name="FK_4632F0059D1C3019" table="message_metadata" schema="" catalog="siv" columns="participant_id"/>
+      <exported-key name="FK_31204C83B03A8386" table="thread" schema="" catalog="siv" columns="created_by_id"/>
+      <exported-key name="FK_40A577C89D1C3019" table="thread_metadata" schema="" catalog="siv" columns="participant_id"/>
+      <exported-key name="FK_470D3983453D3D6F" table="visites" schema="" catalog="siv" columns="hote_id"/>
+      <index name="UNIQ_1483A5E992FC23A8" unique="true" columns="username_canonical"/>
+      <index name="UNIQ_1483A5E9A0D96FBF" unique="true" columns="email_canonical"/>
+      <index name="UNIQ_1483A5E9C05FB297" unique="true" columns="confirmation_token"/>
+    </table>
+    <table name="visites" schema="" catalog="siv" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="hote_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="societe" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prenom" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nobadge" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="date_entree" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="date_sortie" sqlType="TINYTEXT" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="heure_entree" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="heure_sortie" sqlType="TINYTEXT" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="commentaire" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="piece" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="no_piece" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_470D3983453D3D6F" columns="hote_id" ref-table="users" ref-schema="" ref-catalog="siv" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_470D3983453D3D6F" unique="false" columns="hote_id"/>
+    </table>
+  </data-source>
+</component>

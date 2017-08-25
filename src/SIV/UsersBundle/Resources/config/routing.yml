@@ -1,0 +1,3 @@
+siv_users_homepage:
+    path:     /
+    defaults: { _controller: SIVUsersBundle:Default:index }

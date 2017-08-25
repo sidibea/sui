@@ -1,0 +1,35 @@
+siv_main_homepage:
+    path:     /
+    defaults: { _controller: SIVMainBundle:Main:index }
+siv_main_visiteurs_edit:
+    path:     /visiteurs/{id}
+    defaults: { _controller: SIVMainBundle:Main:vEdit }
+siv_main_visiteurs_sortie:
+    path:     /visiteurs/sortie/{id}
+    defaults: { _controller: SIVMainBundle:Main:vSortie }
+siv_main_visiteurs_employee:
+    path:     /employee
+    defaults: { _controller: SIVMainBundle:Main:employee }
+siv_main_visiteurs_employee_add:
+    path:     /employee/nouveau
+    defaults: { _controller: SIVMainBundle:Main:empAdd }
+
+
+siv_main_visiteurs_present:
+    path:     /visiteurs-presents
+    defaults: { _controller: SIVMainBundle:Main:Vpresent }
+siv_main_visiteurs_historique:
+    path:     /historique
+    defaults: { _controller: SIVMainBundle:Main:historique }
+
+siv_main_stats:
+    path:     /statistiques
+    defaults: { _controller: SIVMainBundle:Stats:index }
+
+
+siv_main_message:
+    path:     /messages
+    defaults: { _controller: SIVMainBundle:Message:index }
+siv_main_message_compose:
+    path:     /messages/compose
+    defaults: { _controller: SIVMainBundle:Message:compose }

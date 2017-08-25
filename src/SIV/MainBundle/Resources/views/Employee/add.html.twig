@@ -1,0 +1,239 @@
+{% extends "::base.html.twig" %}
+
+
+{% block content %}
+    <!-- BEGIN PAGE HEADER-->
+    <h3 class="page-title">
+        Tableau de Bord <small>Rapports & statistiques</small>
+    </h3>
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="{{ path('siv_main_homepage') }}">Accueil</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Tableau de Bord</a>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
+                <i class="icon-calendar"></i>&nbsp; <span class="uppercase visible-lg-inline-block"></span>&nbsp; <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+
+    <div class="clearfix">
+    </div>
+
+{{ form_start(form) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-red-sunglo">
+                    <i class="fa fa-users font-red-sunglo"></i>
+                    <span class="caption-subject bold uppercase"> Les informations concernant l'employé</span>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.nom, {'attr': {'class': 'form-control ', 'id': 'nom' }}) }}
+                                <label for="nom">Nom de famille</label>
+                                <span class="help-block">Entrez le nom de famille de l'employé</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.prenom, {'attr': {'class': 'form-control ', 'id': 'prenom' }}) }}
+                                <label for="prenom">Prénom</label>
+                                <span class="help-block">Entrez le prénom du visiteur</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.fonction, {'attr': {'class': 'form-control ', 'id': 'nom' }}) }}
+                                <label for="nom">Fonction</label>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.departement, {'attr': {'class': 'form-control ', 'id': 'prenom' }}) }}
+                                <label for="prenom">Département</label>
+                                <span class="help-block">Entrez le département de l'employé</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.telephone, {'attr': {'class': 'form-control ', 'id': 'nom' }}) }}
+                                <label for="nom">Téléphone</label>
+                                <span class="help-block">Entrez le numéro de téléphone de l'employé</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.email, {'attr': {'class': 'form-control ', 'id': 'prenom' }}) }}
+                                <label for="prenom">Email</label>
+                                <span class="help-block">Entrez l'adresse email de l'employé</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.username, {'attr': {'class': 'form-control ', 'id': 'prenom' }}) }}
+                                <label for="prenom">Nom d'utilisateur</label>
+                                <span class="help-block">Entrez le nom d'utilisateur de l'employé</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control ', 'id': 'nom' }}) }}
+                                <label for="nom">Mot de passe</label>
+                                <span class="help-block">Entrez le mot de passe</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control ', 'id': 'prenom' }}) }}
+                                <label for="prenom">Confirmez</label>
+                                <span class="help-block">Entrez  du visiteur</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn green">Memorisé</button>
+                <button type="button" class="btn default">Liste des visiteurs présents</button>
+            </div>
+        </div>
+    </div>
+</div>
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+{% endblock %}
+
+
+
+
+{% block styleplugins %}
+    {% stylesheets filter="scssphp" output="css/styleplugins.css"
+    "assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"
+    "assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"
+    "assets/global/plugins/fullcalendar/fullcalendar.min.css"
+    "assets/global/plugins/jqvmap/jqvmap/jqvmap.css"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+{% endblock %}
+
+{% block pagestyle %}
+    {% stylesheets filter="scssphp" output="css/pagestyle.css"
+    "assets/admin/pages/css/tasks.css"
+
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- END PAGE STYLES -->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block pagepluginsjs %}
+    {% javascripts filter="?jsqueeze" output="js/coreplugins.js"
+    "assets/global/plugins/bootstrap-daterangepicker/moment.min.js"
+    "assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"
+    "assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"
+
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
+
+{% block pagescripts %}
+    {% javascripts filter="?jsqueeze" output="js/index.js"
+    "assets/global/scripts/metronic.js"
+    "assets/admin/layout/scripts/layout.js"
+    "assets/admin/layout/scripts/quick-sidebar.js"
+    "assets/admin/layout/scripts/demo.js"
+    "assets/admin/pages/scripts/index.js"
+    "assets/admin/pages/scripts/components-pickers.js"
+    %}
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        jQuery(document).ready(function() {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+            QuickSidebar.init(); // init quick sidebar
+            Demo.init(); // init demo features
+            Index.init();
+            ComponentsPickers.init();
+
+        });
+    </script>
+{% endblock %}
+

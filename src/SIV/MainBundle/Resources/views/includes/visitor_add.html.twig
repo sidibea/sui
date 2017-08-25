@@ -1,0 +1,172 @@
+    {{ form_start(form) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+<div class="row">
+    <div class="col-md-8">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-red-sunglo">
+                    <i class="icon-settings font-red-sunglo"></i>
+                    <span class="caption-subject bold uppercase"> Les informations concernant le visiteur</span>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <div class="form-group form-md-line-input has-info">
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control '}}) }}
+                    <label for="form_control_1">Type</label>
+                </div>
+                <div class="form-group form-md-line-input has-success">
+                    <div class="input-icon">
+                        {{ form_widget(form.societe, {'attr': {'class': 'form-control ', 'id': 'societe' }}) }}
+                        <label for="societe">Société</label>
+                        <span class="help-block">Entrez le nom de la société du visiteur</span>
+                        <i class="fa fa-institution"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.nom, {'attr': {'class': 'form-control ', 'id': 'nom' }}) }}
+                                <label for="nom">Nom de famille</label>
+                                <span class="help-block">Entrez le nom de famille du visiteur</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.prenom, {'attr': {'class': 'form-control ', 'id': 'prenom' }}) }}
+                                <label for="prenom">Prénom</label>
+                                <span class="help-block">Entrez le prénom du visiteur</span>
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.nobadge, {'attr': {'class': 'form-control ', 'id': 'nobadge' }}) }}
+                                <label for="nobadge">No Badge</label>
+                                <span class="help-block">Entrez le No du badge du visiteur</span>
+                                <i class="fa fa-barcode"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-md-line-input has-success">
+                            <div class="input-icon">
+                                {{ form_widget(form.telephone, {'attr': {'class': 'form-control ', 'id': 'tel' }}) }}
+
+                                <label for="tel">Tel</label>
+                                <span class="help-block">Entrez le numéro de téléphone du visiteur</span>
+                                <i class="fa fa-phone"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">&nbsp;</div>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <div class="col-md-4">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="form-group">
+                    <label class="control-label">Date Entrée</label>
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            {{ form_widget(form.dateEntree, {'attr': {'class': 'form-control date-picker ', 'id': 'dateEntree' }}) }}
+                            <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Heure entrée</label>
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            {{ form_widget(form.heureEntree, {'attr': {'class': 'form-control timepicker timepicker-24', 'id': 'dateEntree' }}) }}
+
+                            <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="form-group">
+                    <label>Hôte </label>
+                    {{ form_widget(form.hote, {'attr': {'class': 'form-control', 'id': 'hote' }}) }}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="form-group">
+                    <label>Pièce d'identité fournie </label>
+                    {{ form_widget(form.piece, {'attr': {'class': 'form-control', 'id': 'hote' }}) }}
+                </div>
+                <div class="form-group">
+                    <label>No de la pièce fournie </label>
+                    {{ form_widget(form.noPiece, {'attr': {'class': 'form-control', 'id': 'hote' }}) }}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <i class="fa fa-comment font-red-sunglo"></i>
+                <span class="caption-subject bold uppercase"> Commentaires</span>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <div class="form-group">
+                {{ form_widget(form.commentaire, {'attr': {'class': 'form-control', 'rows': '3' }}) }}
+
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn green">Valider l'entrée</button>
+                <button type="button" class="btn default">Liste des visiteurs présents</button>
+            </div>
+        </div>
+    </div>
+</div>
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+
+
+
+

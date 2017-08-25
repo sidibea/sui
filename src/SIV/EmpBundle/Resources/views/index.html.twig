@@ -1,0 +1,186 @@
+{% extends "::empbase.html.twig" %}
+
+
+{% block content %}
+    <!-- BEGIN PAGE HEADER-->
+    <h3 class="page-title">
+        Tableau de Bord <small>Rapports & statistiques</small>
+    </h3>
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="{{ path('siv_main_homepage') }}">Accueil</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Tableau de Bord</a>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
+                <i class="icon-calendar"></i>&nbsp; <span class="uppercase visible-lg-inline-block"></span>&nbsp; <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+    <!-- BEGIN DASHBOARD STATS -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat red">
+                <div class="visual">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        1349
+                    </div>
+                    <div class="desc">
+                        Visiteurs ce mois
+                    </div>
+                </div>
+                <a class="more" href="javascript:;">
+                    Nouveau visiteur <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat blue-madison">
+                <div class="visual">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        12
+                    </div>
+                    <div class="desc">
+                        Visiteurs présents sur le site
+                    </div>
+                </div>
+                <a class="more" href="javascript:;">
+                    Voir la liste <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat green-haze">
+                <div class="visual">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        549
+                    </div>
+                    <div class="desc">
+                        Visiteurs
+                    </div>
+                </div>
+                <a class="more" href="javascript:;">
+                    Historique <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat purple-plum">
+                <div class="visual">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        145
+                    </div>
+                    <div class="desc">
+                        Contacts
+                    </div>
+                </div>
+                <a class="more" href="javascript:;">
+                    Carnet d'adresse <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- END DASHBOARD STATS -->
+    <div class="clearfix">
+    </div>
+
+    {% include "SIVMainBundle:includes:emp_visitor_add.html.twig" %}
+
+{% endblock %}
+
+
+
+
+{% block styleplugins %}
+    {% stylesheets filter="scssphp" output="css/styleplugins.css"
+    "assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"
+    "assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"
+    "assets/global/plugins/fullcalendar/fullcalendar.min.css"
+    "assets/global/plugins/jqvmap/jqvmap/jqvmap.css"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+{% endblock %}
+
+{% block pagestyle %}
+    {% stylesheets filter="scssphp" output="css/pagestyle.css"
+    "assets/admin/pages/css/tasks.css"
+
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- END PAGE STYLES -->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block pagepluginsjs %}
+    {% javascripts filter="?jsqueeze" output="js/coreplugins.js"
+    "assets/global/plugins/bootstrap-daterangepicker/moment.min.js"
+    "assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"
+    "assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"
+
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
+
+{% block pagescripts %}
+    {% javascripts filter="?jsqueeze" output="js/index.js"
+    "assets/global/scripts/metronic.js"
+    "assets/admin/layout/scripts/layout.js"
+    "assets/admin/layout/scripts/quick-sidebar.js"
+    "assets/admin/layout/scripts/demo.js"
+    "assets/admin/pages/scripts/index.js"
+    "assets/admin/pages/scripts/components-pickers.js"
+    %}
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        jQuery(document).ready(function() {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+            QuickSidebar.init(); // init quick sidebar
+            Demo.init(); // init demo features
+            Index.init();
+            ComponentsPickers.init();
+
+        });
+    </script>
+{% endblock %}
+

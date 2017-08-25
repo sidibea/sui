@@ -1,0 +1,174 @@
+{% extends "::base.html.twig" %}
+
+
+{% block content %}
+    <!-- BEGIN PAGE HEADER-->
+    <h3 class="page-title">
+        Tableau de Bord <small>Rapports & statistiques</small>
+    </h3>
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="{{ path('siv_main_homepage') }}">Accueil</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">Statistiques</a>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
+                <i class="icon-calendar"></i>&nbsp; <span class="uppercase visible-lg-inline-block"></span>&nbsp; <i class="fa fa-angle-down"></i>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+    <!-- BEGIN DASHBOARD STATS -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="portlet light bordered">
+                <div class="portlet-title"><h3>Statistiques journaliers</h3></div>
+                <div class="portlet-body">
+                    <div id="myfirstchart" style="height: 250px;"></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- END DASHBOARD STATS -->
+    <div class="clearfix">
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+{% block styleplugins %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+    {% stylesheets filter="scssphp" output="css/styleplugins.css"
+    "assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"
+    "assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"
+    "assets/global/plugins/fullcalendar/fullcalendar.min.css"
+    "assets/global/plugins/jqvmap/jqvmap/jqvmap.css"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+{% endblock %}
+
+{% block pagestyle %}
+    {% stylesheets filter="scssphp" output="css/pagestyle.css"
+    "assets/admin/pages/css/tasks.css"
+
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- END PAGE STYLES -->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block pagepluginsjs %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    {% javascripts filter="?jsqueeze" output="js/coreplugins.js"
+    "assets/global/plugins/bootstrap-daterangepicker/moment.min.js"
+    "assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"
+    "assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"
+
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
+
+{% block pagescripts %}
+
+    {% javascripts filter="?jsqueeze" output="js/index.js"
+    "assets/global/scripts/metronic.js"
+    "assets/admin/layout/scripts/layout.js"
+    "assets/admin/layout/scripts/quick-sidebar.js"
+    "assets/admin/layout/scripts/demo.js"
+    "assets/admin/pages/scripts/index.js"
+    "assets/admin/pages/scripts/components-pickers.js"
+    %}
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        jQuery(document).ready(function() {
+
+            var area = new Morris.Area({
+                element: 'myfirstchart',
+                resize: true,
+                data: [
+                    {% for key, val in monthlyVisitors %}
+                    {y: '{{ val.date_entree }}', item1: {{ val.nb }}},
+                    {% endfor %}
+                ],
+                xkey: 'y',
+                xLabels: "day",
+                ykeys: ['item1'],
+                labels: ['Visiteurs'],
+                lineColors: ['#a0d0e0', '#3c8dbc'],
+                hideHover: 'auto'
+            });
+
+        });
+    </script>
+    <script>
+        jQuery(document).ready(function() {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+            QuickSidebar.init(); // init quick sidebar
+            Demo.init(); // init demo features
+            Index.init();
+            ComponentsPickers.init();
+
+            new Morris.Line({
+                // ID of the element in which to draw the chart.
+                element: 'myfirstchart',
+                // Chart data records -- each entry in this array corresponds to a point on
+                // the chart.
+                data: [
+                    { year: '2008', value: 20 },
+                    { year: '2009', value: 10 },
+                    { year: '2010', value: 5 },
+                    { year: '2011', value: 5 },
+                    { year: '2012', value: 20 }
+                ],
+                // The name of the data record attribute that contains x-values.
+                xkey: 'year',
+                // A list of names of data record attributes that contain y-values.
+                ykeys: ['value'],
+                // Labels for the ykeys -- will be displayed when you hover over the
+                // chart.
+                labels: ['Value']
+            });
+
+        });
+    </script>
+{% endblock %}
+

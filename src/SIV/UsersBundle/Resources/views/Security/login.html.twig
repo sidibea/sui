@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
+Version: 3.3.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="fr">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8"/>
+    <title>SIV - Connectez-vous</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    {% stylesheets filter="scssphp" output="css/global.css"
+    "assets/global/plugins/font-awesome/css/font-awesome.min.css"
+    "assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+    "assets/global/plugins/bootstrap/css/bootstrap.min.css"
+    "assets/global/plugins/uniform/css/uniform.default.css"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    {% stylesheets filter="scssphp" output="css/page.css"
+    "assets/admin/pages/css/login2.css"
+
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <!-- BEGIN THEME STYLES -->
+    {% stylesheets filter="scssphp" output="css/theme.css"
+    "assets/global/css/components-md.css"
+    "assets/global/css/plugins-md.css"
+    "assets/admin/layout/css/layout.css"
+    "assets/admin/layout/css/themes/default.css"
+    "assets/admin/layout/css/custom.css"
+
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-md login">
+<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+<div class="menu-toggler sidebar-toggler">
+</div>
+<!-- END SIDEBAR TOGGLER BUTTON -->
+<!-- BEGIN LOGO -->
+<div class="logo">
+    <a href="{{ path('siv_main_homepage') }}">
+       <img src="{{ absolute_url('assets/logo.png') }}" width="150" height="100" title="logo SIV"/>
+    </a>
+</div>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    <form class="login-form" action="{{ path('login_check') }}" method="post">
+        <div class="form-title">
+            <span class="form-title">Bienvenue.</span>
+            <span class="form-subtitle">Veuillez vous connecter.</span>
+        </div>
+        <div class="alert alert-danger display-hide">
+            <button class="close" data-close="alert"></button>
+            <span>
+			Entrez votre nom d'utilisateur et votre Email. </span>
+        </div>
+        <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Nom d'utilisateur</label>
+            <input class="form-control form-control-solid placeholder-no-fix"  type="text" autocomplete="off" placeholder="Nom d'utilisateur" name="_username"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Mot de passe</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="password"  autocomplete="off" placeholder="Mot de passe" name="_password"/>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-block uppercase">Se connecter</button>
+        </div>
+        <div class="form-actions">
+            <div class="pull-left">
+                <label class="rememberme check">
+                    <input type="checkbox" name="_remember_me" />Restez connecter </label>
+            </div>
+            <div class="pull-right forget-password-block">
+                <a href="javascript:;" id="forget-password" class="forget-password">Mot de passe oublié?</a>
+            </div>
+        </div>
+        <div class="create-account">
+            <p>
+                <a href="{{ path('fos_user_registration_register') }}" id="register-btn">S'inscrire</a>
+            </p>
+        </div>
+
+    </form>
+    <!-- END LOGIN FORM -->
+
+</div>
+<div class="copyright hide">
+    2017 © KEMA. SIV.
+</div>
+<!-- END LOGIN -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="{{ absolute_url('assets/global/plugins/respond.min.js') }}"></script>
+<script src="{{ absolute_url('assets/global/plugins/excanvas.min.js') }}"></script>
+<![endif]-->
+    {% javascripts filter="?jsqueeze" output="js/core.js"
+    "assets/global/plugins/jquery.min.js"
+    "assets/global/plugins/jquery-migrate.min.js"
+    "assets/global/plugins/bootstrap/js/bootstrap.min.js"
+    "assets/global/plugins/jquery.blockui.min.js"
+    "assets/global/plugins/uniform/jquery.uniform.min.js"
+    "assets/global/plugins/jquery.cokie.min.js"
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+<!-- END CORE PLUGINS -->
+
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+    {% javascripts filter="?jsqueeze" output="js/login_plugins.js"
+    "assets/global/plugins/jquery-validation/js/jquery.validate.min.js"
+
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+    {% javascripts filter="?jsqueeze" output="js/login.js"
+    "assets/global/scripts/metronic.js"
+        "assets/admin/layout/scripts/layout.js"
+        "assets/admin/layout/scripts/demo.js"
+        "assets/admin/pages/scripts/login.js"
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+    jQuery(document).ready(function() {
+        Metronic.init(); // init metronic core components
+        Layout.init(); // init current layout
+        Login.init();
+        Demo.init();
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

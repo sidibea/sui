@@ -1,0 +1,15 @@
+siv_emp_homepage:
+    path:     /
+    defaults: { _controller: SIVEmpBundle:Main:index }
+siv_emp_visiteurs_present:
+    path:     /visiteurs-presents
+    defaults: { _controller: SIVEmpBundle:Main:vprensent }
+siv_emp_visiteurs_edit:
+    path:     /visiteurs/{id}
+    defaults: { _controller: SIVEmpBundle:Main:vEdit }
+siv_emp_visiteurs_sortie:
+    path:     /visiteurs/sortie/{id}
+    defaults: { _controller: SIVEmpBundle:Main:vSortie }
+siv_emp_visiteurs_historique:
+    path:     /historique
+    defaults: { _controller: SIVEmpBundle:Main:historique }
